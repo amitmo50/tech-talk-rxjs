@@ -2,7 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 
 import {
   flatMap,
+  forkJoin,
   map,
+  mergeAll,
   mergeMap,
   Observable,
   of,
@@ -11,6 +13,7 @@ import {
   switchMap,
   takeUntil,
   tap,
+  toArray,
   zip,
 } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -47,17 +50,13 @@ export class UserListComponent implements OnInit, OnDestroy {
       takeUntil(this.onDestroy$),
       switchMap((users: any[]) => this.getUsersObservable(users)),
       mergeMap((users: any[]) => users),
-      scan((acc: UserCard[], user: UserCard) => {
-        acc = [...acc, user];
-        return acc;
-      }, [])
+      toArray()
     );
   }
 
   private getUsersObservable(users: UserCard[]): Observable<any> {
-    return zip(users.map((user: any) => this.handleUserData(user))).pipe(
-      takeUntil(this.onDestroy$)
-    );
+    const users$ = users.map((user: any) => this.handleUserData(user));
+    return forkJoin(users$).pipe(takeUntil(this.onDestroy$));
   }
 
   private handleUserData(user: any): Observable<any> {
