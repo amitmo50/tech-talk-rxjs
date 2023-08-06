@@ -1,0 +1,37 @@
+.user-card {
+  text-align: left;
+  padding: 20px;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 250px;
+  border: 1px solid black;
+  color: white;
+  border-radius: 8px;
+  gap: 3px;
+  background-color: rgb(4, 34, 37);
+  box-shadow: 12px 12px 2px 1px rgba(177, 177, 216, 0.2);
+}
+.user-card .info-container {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-card .separate-line {
+  border: 1px dashed white;
+  margin: 10px;
+}
+p {
+  margin: 0;
+  padding: 2px;
+}
+
+img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}

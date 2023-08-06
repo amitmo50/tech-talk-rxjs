@@ -1,0 +1,10 @@
+<div class="cards-example">
+  <h2>User List</h2>
+  <ul class="card-container">
+    <ng-container *ngFor="let user of users$ | async">
+      <li class="card">
+        <app-user-card [user]="user"></app-user-card>
+      </li>
+    </ng-container>
+  </ul>
+</div>

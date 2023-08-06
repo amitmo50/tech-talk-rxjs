@@ -1,0 +1,16 @@
+<div class="user-card" *ngIf="user">
+  <div class="info-container">
+    <img [src]="user.image" alt="User Avatar" />
+    <h3>{{ user.firstName }} {{ user.lastName }}</h3>
+    <p>Email: {{ user.email }}</p>
+    <p>Phone: {{ user.phone }}</p>
+  </div>
+  <br />
+  <div class="separate-line"></div>
+  <p>Date {{ user.dateOfBirth | date: 'MMM d, y' }}</p>
+  <p>Country: {{ user.address.country }}</p>
+  <p>City: {{ user.address.city }}</p>
+  <p>Flag: {{ user.address.flag }}</p>
+  <p>Street: {{ user.address.street }}</p>
+  <p>Currency: {{ user.address.currency }}</p>
+</div>
